@@ -44,7 +44,7 @@ def load_all_jsons(input_dir, output_dir):
     print("\n📊 Gold Summary:\nTotal:", total, "| Inserted:", success, "| Skipped:", fail)
 
 def load_json(file, cursor):
-    data = json.loads(file.read_text())
+    data = json.loads(file.read_text(encoding="utf-8"))
     hash_input = f"{normalize(data['job_title'])}|{normalize(data['company'])}|{normalize(data['description'])}"
     content_hash = hashlib.sha256(hash_input.encode()).hexdigest()
 

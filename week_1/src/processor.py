@@ -52,7 +52,7 @@ def process_html(infile, output_dir):
             company=company,
             description=description
         )
-        outfile.write_text(job.model_dump_json(indent=4))
+        outfile.write_text(job.model_dump_json(indent=4),encoding="utf-8")
         logging.info(f"✅ Processed: {infile.name}")
         return True
     except ValidationError as e:

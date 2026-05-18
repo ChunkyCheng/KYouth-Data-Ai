@@ -31,7 +31,7 @@ def ingest_mhtml(infile, output_dir):
     mhtml_data = message_from_binary_file(infile.open("rb"))
     for part in mhtml_data.walk():
         if part.get_content_type() == "text/html":
-            outfile.write_text(quopri.decodestring(part.get_payload(decode=False)).decode())
+            outfile.write_text(quopri.decodestring(part.get_payload(decode=False)).decode(),encoding="utf-8")
             logging.info(f"✅ Extracted: {infile.name}")
             return True
     logging.warning(f"⚠️ No HTML content found in: {infile.name}")
